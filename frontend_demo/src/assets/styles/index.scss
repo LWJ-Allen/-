@@ -1,0 +1,39 @@
+@import './mixin.scss';
+@import './reset.scss';
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei',
+    Arial, 'sans-serif';
+  @include base-background-color;
+  @include base-font-size;
+  overflow: hidden;
+  .van-toast{
+    background-color: var(--van-toast-background);
+  }
+  --van-nav-bar-icon-color: rgb(23, 95, 165);
+  --van-nav-bar-text-color: rgb(23, 95, 165);
+  .bgBlue{
+    &::before{
+      background-image: url('../images/blue.png');
+    }
+    
+  }
+  .bgGreen{
+    &::before{
+    background-image: url('../images/green.png');
+    }
+  }
+  .bgOrange{
+    &::before{
+    background-image: url('../images/orange.png');
+    }
+  }
+  .bgPurple{
+    &::before{
+    background-image: url('../images/purple.png');
+    }
+  }
+}

@@ -37,4 +37,14 @@ public class Store {
         menu.add(new Food(foodName, price));
         return true;
     }
+
+    public boolean eraseFood(String foodName){
+        Food food = findFood(foodName); 
+        if(food != null){
+            menu.remove(food);
+        }   
+        else {
+            return false; 
+        }
+    }
 }

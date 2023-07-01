@@ -60,6 +60,11 @@ public class StoreManager {
         return store.addFood(foodName, price);
     }
 
+    public boolean eraseFood(int storeId, String foodName){
+        Store store = findStoreId(storeId);
+        return store.eraseFood(foodName);
+    }
+
     public List<Food> getMenu(int storeId){
         Store store = findStoreId(storeId);
         return store.menu;

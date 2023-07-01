@@ -1,0 +1,32 @@
+// 文字大小
+@mixin base-font-size{
+    font-size: 14px;
+} // 基础字体大小
+@mixin small-font-size{
+    font-size: 13px; // 小字体大小
+}
+@mixin big-font-size{
+    font-size: 16px; // 大字体大小
+}
+
+// 主题色
+@mixin primary-color{
+    background: #1756f6;
+}
+@mixin primary-color-hover{
+    background-color: #356cf5;
+}
+@mixin default-color-hover{
+    background-color:  #d9e1f6;
+}
+
+@mixin main-text-color{
+    color:  #222;
+}
+
+@mixin base-background-color{
+    background-color:  #f3f4f7;
+} // 内容区默认背景色
+@mixin layout-bg-color{
+    background-color: #151c41;
+} // 布局背景颜色 #545c64

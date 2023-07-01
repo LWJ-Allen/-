@@ -1,6 +1,6 @@
 <template>
     <el-container>
-        <el-header height="200px"></el-header>
+        <el-header height="100px"></el-header>
         <el-main>
             <el-container style="align-items: center">
                 <el-header height="120px">
@@ -11,9 +11,11 @@
                 </el-header>
                 <el-main>
                     <el-form :model="form" id="form" ref="formRef" :rules="rules">
+                        <!-- 商家checkbox -->
                         <el-form-item style="margin: 20px auto auto 25px;">
-                            <el-checkbox v-model="form.window" label="商家" border></el-checkbox>
+                            <el-checkbox class="checkbox" v-model="form.window" label="商家" border></el-checkbox>
                         </el-form-item>
+                        <!-- 账号输入 -->
                         <el-form-item prop="account" class="text_item">
                             <el-input v-model="form.account" placeholder="账号" class="text">
                                 <template #prefix>
@@ -23,6 +25,7 @@
                                 </template>
                             </el-input>
                         </el-form-item>
+                        <!-- 密码输入 -->
                         <el-form-item prop="password" class="text_item">
                             <el-input v-model="form.password" placeholder="密码" type="password" class="text" show-password>
                                 <template #prefix>
@@ -32,14 +35,16 @@
                                 </template>
                             </el-input>
                         </el-form-item>
+                        <!-- 注册链接 -->
                         <el-form-item style="margin-left: 170px;">
                             <el-link>
                                 还没有账号？去注册！
                                 <el-icon size="20" color="#009999"><Right /></el-icon>
                             </el-link>
                         </el-form-item>
+                        <!-- 登录按钮 -->
                         <el-form-item>
-                            <el-button color="#009999" style="margin: auto auto;" @click="submitForm(formRef)">
+                            <el-button class="button" color="#009999" style="margin: auto auto;" @click="submitForm(formRef)">
                                 <el-icon :size="20"><SuccessFilled /></el-icon>
                                 &nbsp;登录
                             </el-button>
@@ -123,7 +128,16 @@ form {
 
         :deep(.el-input__wrapper.is-focus) {
             border: 1px solid #009999;
+            box-shadow: var(--el-box-shadow);
         }
+    }
+
+    .button:hover {
+        background-color: #4d84e2;
+    }
+
+    .checkbox:hover {
+        box-shadow: var(--el-box-shadow);
     }
 
 

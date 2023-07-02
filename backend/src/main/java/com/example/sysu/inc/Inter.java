@@ -1,18 +1,19 @@
 import java.util.List;
 
 public class Inter {
+    private static Inter instance = new Inter();
     private UserManager userManager;
     private StoreManager storeManager;
     private OrderManager orderManager;
-    public Inter(){
+    private Inter(){
         this.userManager = new UserManager();
         this.storeManager = new StoreManager();
         this.orderManager = new OrderManager();
         System.out.println("create Interface");
     }
 
-    public void doComand(){
-        //调用login，作为测试
+    public static Inter getInstance(){
+        return instance;
     }
 
     public boolean userLogin(String userName, String password){

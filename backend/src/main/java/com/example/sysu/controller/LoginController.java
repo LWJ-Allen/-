@@ -2,6 +2,7 @@ package com.example.sysu.controller;
 
 
 import com.example.sysu.bean.ApiResult;
+import com.example.sysu.inc.Inter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.web.bind.annotation.RequestMapping;

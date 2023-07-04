@@ -45,4 +45,12 @@ public class StoreServices {
         }
         return new ApiResult<String>("103", "Error", "").toJson();
     }
+    
+    public static ObjectNode queryAll(){
+        ArrayNode storeList  = storeManager.getAllStore(); 
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode res = objectMapper.createObjectNode();
+        res.putArray("store_list").addAll(storeList);
+        return new ApiResult<ObjectNode>("101", "success", res).toJson();
+    }
 }

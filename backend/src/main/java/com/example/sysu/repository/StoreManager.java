@@ -77,4 +77,23 @@ public class StoreManager {
         return tmp.getStoreId();
     }
 
+    public ArrayNode getAllStore(){
+        ArrayNode Ares; 
+        for (HashMap.Entry < String, Store > entry: stores.entrySet()) {  
+            Store tmp = entry.getValue();
+            ObjectMapper objectMapper = new ObjectMapper();
+            ObjectNode res = objectMapper.createObjectNode();
+            
+            res.put("store_name",tmp.getStoreName());
+            res.put("store_account",tmp.getStoreAccount());
+            res.put("store_password",tmp.getStorePassword());
+            res.put("store_des",tmp.getStoreDescription());
+            res.put("store_d_name",tmp.getDirectorName());
+            res.put("store_d_id",tmp.getDirectorId());
+            res.put("store_d_phone",tmp.getDirectorPhone());
+            res.put("store_id",tmp.getStoreId());
+            Ares.add(res); 
+        } 
+        return Ares;
+    }
 }

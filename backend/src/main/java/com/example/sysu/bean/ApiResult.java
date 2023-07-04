@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ApiResult<T> {
     private String code;
-    private String msg;
+    private String message;
     private T data;
 
     public ObjectNode toJson() {
@@ -15,7 +15,7 @@ public class ApiResult<T> {
         ObjectNode res = objectMapper.createObjectNode();
 
         res.put("code", code);
-        res.put("msg", msg);
+        res.put("message", message);
         res.set("data", objectMapper.convertValue(data, JsonNode.class));
         return res;
     }

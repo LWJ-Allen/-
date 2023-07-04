@@ -47,7 +47,7 @@ export default defineConfig(({ mode }) => {
             // host: settings.host,
             proxy: {
                 '/dev-api': {
-                    target: 'http://',
+                    target: 'http://localhost:5000',
                     changeOrigin: true,
                     rewrite: p => p.replace(/^\/dev-api/, '')
                 }

@@ -1,9 +1,11 @@
+package com.example.sysu.inc;
 import java.util.Scanner;
 import java.util.List;
 
+import com.example.sysu.inc.Inter;
 public class Main {
     public static void main(String[] args) {
-        Inter inter = new Inter();
+        Inter inter = Inter.getInstance();
         int c = 0;
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;

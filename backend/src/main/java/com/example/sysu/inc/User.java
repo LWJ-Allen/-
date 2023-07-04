@@ -1,3 +1,4 @@
+package com.example.sysu.inc;
 public class User {
     public int userId;
     public String userName;

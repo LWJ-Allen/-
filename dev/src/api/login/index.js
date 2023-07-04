@@ -1,6 +1,9 @@
-import service from "@/utils/request.js";
-import axios from "axios";
+import request from "@/utils/request.js";
 
-const login = async (data) => {
-    const response = await service.post('/login', data)
+export const login = (params) => {
+    return request({
+        url: "/login",
+        method: "post",
+        params
+    })
 }

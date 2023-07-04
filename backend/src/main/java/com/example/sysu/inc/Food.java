@@ -1,3 +1,4 @@
+package com.example.sysu.inc;
 public class Food {
     public String foodName;
     public double price;

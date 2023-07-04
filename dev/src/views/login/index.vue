@@ -10,41 +10,45 @@
                     </el-container>
                 </el-header>
                 <el-main>
-                    <el-form :model="form" id="form" ref="formRef" :rules="rules">
+                    <el-form :model="form" id="form">
                         <!-- 商家checkbox -->
                         <el-form-item style="margin: 20px auto auto 25px;">
-                            <el-checkbox class="checkbox" v-model="form.window" label="商家" border></el-checkbox>
+                            <el-checkbox class="checkbox" v-model="form.isStore" label="商家" border></el-checkbox>
                         </el-form-item>
                         <!-- 账号输入 -->
-                        <el-form-item prop="account" class="text_item">
-                            <el-input v-model="form.account" placeholder="账号" class="text">
-                                <template #prefix>
-                                    <el-icon size="30" color="#009999">
-                                        <User/>
-                                    </el-icon>
-                                </template>
-                            </el-input>
-                        </el-form-item>
+                        <el-tooltip :visible="accTipVisibility" placement="right" :content="accTipContent">
+                            <el-form-item class="text_item">
+                                <el-input v-model="form.account" placeholder="账号" class="text">
+                                    <template #prefix>
+                                        <el-icon size="30" color="#009999">
+                                            <User/>
+                                        </el-icon>
+                                    </template>
+                                </el-input>
+                            </el-form-item>
+                        </el-tooltip>
                         <!-- 密码输入 -->
-                        <el-form-item prop="password" class="text_item">
-                            <el-input v-model="form.password" placeholder="密码" type="password" class="text" show-password>
-                                <template #prefix>
-                                    <el-icon size="30" color="#009999">
-                                        <Lock />
-                                    </el-icon>
-                                </template>
-                            </el-input>
-                        </el-form-item>
+                        <el-tooltip :visible="psdTipVisibility" placement="right" :content="psdTipContent">
+                            <el-form-item  class="text_item">
+                                <el-input v-model="form.password" placeholder="密码" type="password" class="text" show-password>
+                                    <template #prefix>
+                                        <el-icon size="30" color="#009999">
+                                            <Lock />
+                                        </el-icon>
+                                    </template>
+                                </el-input>
+                            </el-form-item>
+                        </el-tooltip>
                         <!-- 注册链接 -->
                         <el-form-item style="margin-left: 170px;">
-                            <el-link>
+                            <el-link @click="jumpToRegister()">
                                 还没有账号？去注册！
                                 <el-icon size="20" color="#009999"><Right /></el-icon>
                             </el-link>
                         </el-form-item>
                         <!-- 登录按钮 -->
                         <el-form-item>
-                            <el-button class="button" color="#009999" style="margin: auto auto;" @click="submitForm(formRef)">
+                            <el-button class="button" color="#009999" style="margin: auto auto;" @click="submitForm()">
                                 <el-icon :size="20"><SuccessFilled /></el-icon>
                                 &nbsp;登录
                             </el-button>
@@ -56,52 +60,58 @@
     </el-container>
 </template>
 
-<script lang="ts" setup>
+<script lang="js" setup>
 import { Lock, User, Right, SuccessFilled } from "@element-plus/icons-vue";
 import { ref, reactive } from 'vue';
-import type { FormInstance, FormRules } from 'element-plus'
-
-const formRef = ref<FormInstance>()
-
-const checkAccount = (rule: any, value: string, callback: any) => {
-    if(value === null || value === '') {
-        return callback(new Error('请输入账号'))
-    }
-    else {
-        callback();
-    }
-}
-
-const checkPassword = (rule: any, value: string, callback: any) => {
-    if(value === null || value === '') {
-        return callback(new Error('请输入密码'))
-    }
-    else {
-        callback();
-    }
-}
+import { useRouter } from "vue-router";
+import { login } from "@/api/login/index.js";
 
 const form = reactive({
-    window: false,
+    isStore: false,
     account: '',
     password: ''
 })
+const router = useRouter();
 
-const rules = reactive<FormRules<typeof form>>( {
-    account: [{validator: checkAccount, trigger: 'blur'}],
-    password: [{validator: checkPassword, trigger: 'blur'}]
-})
+let accTipVisibility = ref(false);
+let accTipContent = ref("");
+let psdTipVisibility = ref(false);
+let psdTipContent = ref("");
 
-const submitForm = (form: FormInstance | undefined) => {
-    if(!form) return;
-    form.validate((valid) => {
-        if(valid) {
-            console.log('submit!')
-        }
-        else {
-            console.log('error submit!')
-        }
-    })
+function jumpToRegister() {
+    if(form.isStore) {
+        router.push({
+            path: '/storeRegister'
+        })
+    }
+    else {
+        router.push({
+            path: '/userRegister'
+        })
+    }
+}
+function submitForm() {
+    if(form.account.length === 0) {
+        accTipContent.value = "账号不能为空！"
+        accTipVisibility.value = true;
+
+        setTimeout( () => {
+            accTipVisibility.value = false;
+        }, 3000)
+        return
+    }
+
+    if(form.password.length === 0) {
+        psdTipContent.value = "密码不能为空！"
+        psdTipVisibility.value = true;
+
+        setTimeout(() => {
+            psdTipVisibility.value = false;
+        }, 3000)
+        return
+    }
+
+    console.log(login(form));
 }
 
 </script>
@@ -130,10 +140,6 @@ form {
             border: 1px solid #009999;
             box-shadow: var(--el-box-shadow);
         }
-    }
-
-    .button:hover {
-        background-color: #4d84e2;
     }
 
     .checkbox:hover {

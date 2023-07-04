@@ -1,3 +1,4 @@
+package com.example.sysu.inc;
 import java.util.List;
 
 public class Inter {

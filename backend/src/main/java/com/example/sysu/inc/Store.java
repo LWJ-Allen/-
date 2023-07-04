@@ -1,3 +1,4 @@
+package com.example.sysu.inc;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,5 +47,6 @@ public class Store {
         else {
             return false; 
         }
+        return false;
     }
 }

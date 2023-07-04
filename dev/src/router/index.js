@@ -7,9 +7,23 @@ const routes = [
         redirect: '/login',
     },
     {
+        path: '/home',
+        redirect: '/login'
+    },
+    {
         path: '/login',
         name: 'login',
         component: () => import('@/views/login/index.vue'),
+    },
+    {
+        path: '/userRegister',
+        name: 'userRegister',
+        component: () => import('@/views/register/userRegister/index.vue'),
+    },
+    {
+        path: '/storeRegister',
+        name: 'storeRegister',
+        component: () => import('@/views/register/storeRegister/index.vue')
     }
 ];
 

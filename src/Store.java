@@ -42,6 +42,7 @@ public class Store {
         Food food = findFood(foodName); 
         if(food != null){
             menu.remove(food);
+            return true;
         }   
         else {
             return false; 

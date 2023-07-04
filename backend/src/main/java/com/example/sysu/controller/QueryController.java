@@ -16,8 +16,8 @@ public class QueryController {
         return StoreServices.queryAllstore();
     }
     @RequestMapping(path = "/query/menu", method = RequestMethod.GET)
-    public ObjectNode query() {
-        return StoreServices.queryAllmenu(@RequestParam String account);
+    public ObjectNode query(@RequestParam String account) {
+        return StoreServices.queryAllmenu(account);
     }
 
 }

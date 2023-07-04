@@ -55,15 +55,15 @@ public class StoreServices {
         return new ApiResult<ObjectNode>("101", "success", res).toJson();
     }
 
-    public state ObjectNode queryAllmenu(String account){
+    public static ObjectNode queryAllmenu(String account){
         ArrayNode menuList  = storeManager.getAllmenu(account);
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode res = objectMapper.createObjectNode();
-        res.putArray("menu_list").addAll(storeList);
+        res.putArray("menu_list").addAll(menuList);
         return new ApiResult<ObjectNode>("101", "success", res).toJson();
     }
 
-    public state ObjectNode addFood(String account,String foodName, double foodPrice, String foodDescription){
+    public static ObjectNode addFood(String account,String foodName, double foodPrice, String foodDescription){
         if(storeManager.addFood(account,foodName,foodPrice,foodDescription)){
             return new ApiResult<String>("101", "food add success", "").toJson();
         }

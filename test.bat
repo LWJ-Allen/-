@@ -1,4 +1,4 @@
 cd bin
-java test ../testcase/1.txt
+java Test ../testcase/1.txt
 cd ..
 pause

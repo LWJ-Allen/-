@@ -78,6 +78,8 @@ student1 123456
 
 ### 2、测试结果展示
 
+直接运行`test.bat`脚本即可。
+
 ```bash
 C:\Users\28790\Desktop\软件工程   课程项目-7.4>cd bin
 

@@ -9,7 +9,7 @@ import com.example.sysu.services.StoreServices;
 
 @RestController
 public class FoodController {
-    @RequestMapping(path = "/query/store", method = RequestMethod.POST)
+    @RequestMapping(path = "/food/add", method = RequestMethod.POST)
     public ObjectNode addFood(@RequestParam String account,@RequestParam String foodName, @RequestParam double foodPrice,@RequestParam String foodDescription) {
         return StoreServices.addFood(account,foodName,foodPrice,foodDescription);
     }

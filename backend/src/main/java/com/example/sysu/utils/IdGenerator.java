@@ -16,6 +16,10 @@ public class IdGenerator {
         return String.valueOf((id ++));
     }
 
+    public static String OrderIdGenerate(){
+        return String.valueOf((id ++));
+    }
+
     public static String foodIdGenerate(int storeId) {
         if(storeFoodIdMap.containsKey(storeId)) {
             int nextFoodId = storeFoodIdMap.get(storeId) + 1;

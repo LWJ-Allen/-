@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 // import java.io.PrintWriter;
 
-public class test {
+public class Test {
     public static void main(String[] args) throws FileNotFoundException{
         Inter inter = new Inter();
         int c = 0;

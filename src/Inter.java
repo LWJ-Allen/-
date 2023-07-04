@@ -68,4 +68,8 @@ public class Inter {
     public boolean completeOrder(int orderId){
         return orderManager.completeOrder(orderId);
     }
+
+    public boolean addFood(int storeId, String foodName, double price){
+        return storeManager.addFood(storeId,foodName, price);
+    }
 }

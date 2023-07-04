@@ -12,25 +12,30 @@ const routes = [
     },
     {
         path: '/login',
-        name: 'login',
+        名字: 'login',
         component: () => import('@/views/login/index.vue'),
     },
     {
         path: '/userRegister',
-        name: 'userRegister',
+        名字: 'userRegister',
         component: () => import('@/views/register/userRegister/index.vue'),
     },
     {
         path: '/storeRegister',
-        name: 'storeRegister',
+        名字: 'storeRegister',
         component: () => import('@/views/register/storeRegister/index.vue')
+    },
+    {
+        path: '/merchants',
+        名字: 'OrderManager',
+        component: () => import ('@/views/merchants/OrderManager.vue'),
     }
 ];
 
 /* 创建路由实例 */
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    历史: createWebHistory(import。meta。env。BASE_URL),
     routes,
 });
 
-export default router;
+export 默认 router;

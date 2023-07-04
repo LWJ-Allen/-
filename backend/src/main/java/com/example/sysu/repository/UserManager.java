@@ -62,4 +62,14 @@ public class UserManager {
         User tmp = users.get(account);
         return tmp.getUserPhone();
     }
+
+    public String getUserNameByID(String userId){
+        for (HashMap.Entry < String, User > entry: users.entrySet()){
+            User tmp = entry.getValue();
+            if(tmp.getUserId().equals(userId)){
+                return tmp.getUserName();
+            }
+        }
+        return "";
+    }
 }

@@ -4,6 +4,7 @@ import com.example.sysu.bean.ApiResult;
 import com.example.sysu.repository.Store;
 import com.example.sysu.repository.StoreManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class StoreServices {
@@ -47,7 +48,7 @@ public class StoreServices {
     }
     
     public static ObjectNode queryAll(){
-        ArrayNode storeList  = storeManager.getAllStore(); 
+        ArrayNode storeList  = storeManager.getAllStore();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode res = objectMapper.createObjectNode();
         res.putArray("store_list").addAll(storeList);

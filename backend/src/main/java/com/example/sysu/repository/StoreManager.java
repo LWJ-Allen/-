@@ -1,5 +1,9 @@
 package com.example.sysu.repository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import java.util.HashMap;
 
 public class StoreManager {
@@ -78,10 +82,10 @@ public class StoreManager {
     }
 
     public ArrayNode getAllStore(){
-        ArrayNode Ares; 
+        ObjectMapper objectMapper = new ObjectMapper();
+        ArrayNode Ares = objectMapper.createArrayNode();
         for (HashMap.Entry < String, Store > entry: stores.entrySet()) {  
             Store tmp = entry.getValue();
-            ObjectMapper objectMapper = new ObjectMapper();
             ObjectNode res = objectMapper.createObjectNode();
             
             res.put("store_name",tmp.getStoreName());
@@ -92,7 +96,7 @@ public class StoreManager {
             res.put("store_d_id",tmp.getDirectorId());
             res.put("store_d_phone",tmp.getDirectorPhone());
             res.put("store_id",tmp.getStoreId());
-            Ares.add(res); 
+            Ares.add(res);
         } 
         return Ares;
     }

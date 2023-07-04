@@ -13,7 +13,7 @@ import com.example.sysu.services.UserServices;
 public class QueryController {
     @RequestMapping(path = "/query/store", method = RequestMethod.GET)
     public ObjectNode query() {
-        return StoreServices.queryAll()
+        return StoreServices.queryAll();
     }
 
 }

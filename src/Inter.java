@@ -58,7 +58,7 @@ public class Inter {
     }
 
     public boolean storeRegister(String storeName, String password){
-        return storeRegister(storeName, password);
+        return storeManager.register(storeName, password);
     }
 
     public List<Order> getStoreOrders(int storeId){

@@ -1,8 +1,10 @@
 package com.example.sysu.services;
 
 import com.example.sysu.bean.ApiResult;
+import com.example.sysu.repository.OrderManager;
 import com.example.sysu.repository.UserManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.HashMap;
@@ -15,9 +17,9 @@ public class OrderServices {
     public static ObjectNode addOrder(String userId,
                                       String storeId,
                                       String foodId,
-                                      Calendar orderDate,
+                                      String orderDate,
                                       double orderPrice){
-        if(OrderManager.addOrder(userId,Store,foodId,orderDate,orderPrice)){
+        if(OrderManager.addOrder(userId,storeId,foodId,orderDate,orderPrice)){
             return new ApiResult<String>("101", "success", "").toJson();
         }
         else {

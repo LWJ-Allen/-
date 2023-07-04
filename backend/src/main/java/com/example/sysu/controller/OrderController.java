@@ -16,9 +16,9 @@ public class OrderController {
     public ObjectNode addorder(@RequestParam String userId, 
                                @RequestParam String storeId,
                                @RequestParam String foodId,
-                               @RequestParam Calendar orderDate,
+                               @RequestParam String orderDate,
                                @RequestParam double orderPrice) {
-        return OrderServices.addOrder(userId,storeId,foodId,orderid,orderDate,orderPrice);
+        return OrderServices.addOrder(userId,storeId,foodId, orderDate,orderPrice);
     }
 
     @RequestMapping(path = "/order/storequery", method = RequestMethod.POST)

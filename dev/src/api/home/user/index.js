@@ -9,3 +9,23 @@ export const queryStore = () => {
     )
 }
 
+export const queryMenu = (params) => {
+    return request(
+        {
+            url: "/query/menu",
+            method: 'get',
+            params
+        }
+    )
+}
+
+export const order = (params) => {
+    return request(
+        {
+            url: "order/add",
+            method: "post",
+            params
+        }
+    )
+}
+

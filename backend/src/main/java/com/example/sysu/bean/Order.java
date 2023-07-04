@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Calendar;
 
 @AllArgsConstructor
 @Setter
@@ -14,6 +13,6 @@ public class Order {
     private String storeId;
     private String foodId;
     private String orderId;
-    private Calendar orderDate;
+    private String orderDate;
     private double orderPrice;
 }

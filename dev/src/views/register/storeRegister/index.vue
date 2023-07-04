@@ -175,7 +175,7 @@ function submitForm() {
         loading.value = false
 
         let code = response.data.code;
-        let message = response.data.msg;
+        let message = response.data.messageg;
         if(code === "101") {
             showElMessage("注册成功！", "success")
         }

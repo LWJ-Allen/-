@@ -7,13 +7,14 @@ const routes = [
         redirect: '/login',
     },
     {
-        path: '/home',
-        redirect: '/login'
-    },
-    {
         path: '/login',
         name: 'login',
         component: () => import('@/views/login/index.vue'),
+    },
+    {
+        path: '/home',
+        name: 'home',
+        redirect: '/login',
     },
     {
         path: '/userRegister',
@@ -24,6 +25,16 @@ const routes = [
         path: '/storeRegister',
         name: 'storeRegister',
         component: () => import('@/views/register/storeRegister/index.vue')
+    },
+    {
+        path: '/home/user',
+        name: 'userHome',
+        component: () => import('@/views/home/user/index.vue')
+    },
+    {
+        path: '/home/store',
+        name: 'storeHome',
+        component: () => import('@/views/home/store/index.vue')
     }
 ];
 

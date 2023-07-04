@@ -11,6 +11,7 @@ import 'element-plus/dist/index.css'
 
 /* 导入全局css */
 import '@/assets/styles/index.scss'
+import {getLocalData} from "@/utils/session.js";
 
 /* 创建app实例 */
 const app = createApp(App)
@@ -22,13 +23,13 @@ app.mount('#app')
 
 
 /* 路由守卫 */
+/*
 router.beforeEach((to, from, next) => {
-    if(to.path === '/home') {
-        window.parent.postMessage({ ifJump: false}, '*')
-        next()
+    const isLogin = getLocalData("userData") !== null || getLocalData("storeData") !== null;
+    if(to.path === '/home' && !isLogin) {
+        next({"path": "/login"})
     }
     else {
-        window.parent.postMessage({ ifJump: true}, '*')
         next()
     }
-})
+})*/

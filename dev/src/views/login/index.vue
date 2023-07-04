@@ -1,5 +1,5 @@
 <template>
-    <el-container>
+    <el-container v-loading="loading" element-loading-text="登录中...">
         <el-header height="100px"></el-header>
         <el-main>
             <el-container style="align-items: center">
@@ -65,6 +65,8 @@ import { Lock, User, Right, SuccessFilled } from "@element-plus/icons-vue";
 import { ref, reactive } from 'vue';
 import { useRouter } from "vue-router";
 import { login } from "@/api/login/index.js";
+import {ElMessage} from "element-plus";
+import {clearLocalData, setLocalData} from "@/utils/session.js";
 
 const form = reactive({
     isStore: false,
@@ -77,6 +79,8 @@ let accTipVisibility = ref(false);
 let accTipContent = ref("");
 let psdTipVisibility = ref(false);
 let psdTipContent = ref("");
+
+let loading = ref(false)
 
 function jumpToRegister() {
     if(form.isStore) {
@@ -110,8 +114,40 @@ function submitForm() {
         }, 3000)
         return
     }
+    loading.value = true;
+    login(form).then(response => {
+        loading.value = false
 
-    console.log(login(form));
+        let code = response.data.code;
+        let data = response.data.data;
+        let message = response.data.message;
+        if(code === "101") {
+            clearLocalData("userData");
+            clearLocalData("storeData");
+            if(form.isStore) {
+                setLocalData("storeData", data);
+                router.push("/home/store");
+            }
+            else {
+                setLocalData("userData", data);
+                router.push("/home/user");
+            }
+        }
+        else {
+            loading.value = false
+            ElMessage({
+                message: "登录失败！" + message,
+                type: "error"
+            })
+        }
+    })
+        .catch(err => {
+            loading.value = false
+            ElMessage({
+                message: "登录失败！" + err.message,
+                type: "error"
+            })
+        })
 }
 
 </script>

@@ -15,10 +15,10 @@ public class UserManager {
     public boolean addUser(String userId, String userName,
                     String userAccount, String userPassword,
                     String userPhone) {
-        if(users.containsKey(userId)) {
+        if(users.containsKey(userAccount)) {
             return false;
         }
-        users.put(userId, new User(userId, userName,
+        users.put(userAccount, new User(userId, userName,
                 userAccount, userPassword,
                 userPhone));
         System.out.printf("Add User id: %s  name: %s.\n%n", userId, userName);
@@ -26,7 +26,7 @@ public class UserManager {
     }
 
     public int login(String account, String password){
-        Store tmpUser = users.get(account);
+        User tmpUser = users.get(account);
         if(tmpUser == null){
             return 0;
         }

@@ -10,14 +10,9 @@ import com.example.sysu.services.StoreServices;
 import com.example.sysu.services.UserServices;
 
 @RestController
-public class QueryController {
-    @RequestMapping(path = "/query/store", method = RequestMethod.GET)
-    public ObjectNode query() {
-        return StoreServices.queryAllstore();
+public class AddFoodController {
+    @RequestMapping(path = "/query/store", method = RequestMethod.POST)
+    public ObjectNode addFood(@RequestParam String account,@RequestParam String foodName, @RequestParam double foodPrice,@RequestParam String foodDescription) {
+        return StoreServices.addFood(account,foodName,foodPrice,foodDescription);
     }
-    @RequestMapping(path = "/query/menu", method = RequestMethod.GET)
-    public ObjectNode query() {
-        return StoreServices.queryAllmenu(@RequestParam String account);
-    }
-
 }

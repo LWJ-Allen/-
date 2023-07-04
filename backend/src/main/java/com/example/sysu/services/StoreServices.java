@@ -47,11 +47,28 @@ public class StoreServices {
         return new ApiResult<String>("103", "Error", "").toJson();
     }
     
-    public static ObjectNode queryAll(){
+    public static ObjectNode queryAllstore(){
         ArrayNode storeList  = storeManager.getAllStore();
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode res = objectMapper.createObjectNode();
         res.putArray("store_list").addAll(storeList);
         return new ApiResult<ObjectNode>("101", "success", res).toJson();
+    }
+
+    public state ObjectNode queryAllmenu(String account){
+        ArrayNode menuList  = storeManager.getAllmenu(account);
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode res = objectMapper.createObjectNode();
+        res.putArray("menu_list").addAll(storeList);
+        return new ApiResult<ObjectNode>("101", "success", res).toJson();
+    }
+
+    public state ObjectNode addFood(String account,String foodName, double foodPrice, String foodDescription){
+        if(storeManager.addFood(account,foodName,foodPrice,foodDescription)){
+            return new ApiResult<String>("101", "food add success", "").toJson();
+        }
+        else{
+            return new ApiResult<String>("101", "food add fail", "").toJson();
+        }
     }
 }

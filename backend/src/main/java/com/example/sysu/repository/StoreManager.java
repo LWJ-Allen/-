@@ -28,6 +28,12 @@ public class StoreManager {
 
     }
 
+    public boolean addFood(String account,String foodName, double foodPrice, String foodDescription){
+        Store tmpStore = stores.get(account);
+
+        return tmpStore.addFood(foodName,foodPrice,foodDescription);
+    }
+
     public int login(String account, String password){
         Store tmpStore = stores.get(account);
         if(tmpStore == null){
@@ -100,4 +106,24 @@ public class StoreManager {
         } 
         return Ares;
     }
+
+    public ArrayNode getAllmenu(String account){
+        Store tmp = stores.get(account);
+        HashMap<String, Food> menuList = tmp.getMenu();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        ArrayNode Ares = objectMapper.createArrayNode();
+        for (HashMap.Entry < String, Food > entry: menuList.entrySet()) {  
+            Food ftmp = entry.getValue();
+            ObjectNode res = objectMapper.createObjectNode();
+            
+            res.put("food_id",ftmp.getFoodId());
+            res.put("food_name",ftmp.getFoodName());
+            res.put("food_price",ftmp.getFoodPrice());
+            res.put("food_description",ftmp.getFoodDescription());
+            Ares.add(res);
+        } 
+        return Ares;
+    } 
 }
+

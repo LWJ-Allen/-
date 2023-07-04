@@ -2,9 +2,12 @@ package com.example.sysu.repository;
 
 import com.example.sysu.bean.Food;
 import com.example.sysu.utils.IdGenerator;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+@Getter
 
 public class Store {
     private final String storeId;

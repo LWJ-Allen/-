@@ -34,13 +34,18 @@ public class StoreManager {
         return null;
     }
 
-    public boolean login(String storeName, String password){
+    public int login(String storeName, String password){
         Store tmpStore = findStoreName(storeName);
         if(tmpStore == null){
             //无此窗口
-            return false;
+            return 0;
         }
-        return tmpStore.verify(password);
+        if(tmpStore.verify(password)){
+            return 1; 
+        }
+        else {
+            return 2; 
+        }
     }
 
     public boolean register(String storeName, String password){

@@ -126,5 +126,31 @@ public class StoreManager {
         } 
         return Ares;
     } 
+
+    public String getFoodNameByID(String storeid,String foodid){
+        for (HashMap.Entry < String, Store > entry: stores.entrySet()){
+            Store tmp = entry.getValue();
+            if(tmp.getStoreId().equals(storeid)){
+                HashMap<String, Food> menuList = tmp.getMenu();
+                for (HashMap.Entry < String, Food > entrymenu: menuList.entrySet()) {
+                    Food ftmp = entrymenu.getValue();
+                    if(ftmp.getFoodId().equals(food_id)){
+                        return ftmp.getFoodName();
+                    }
+                }
+            }
+        }
+        return "";
+    }
+
+    public String getStoreNameByID(String storeid){
+        for (HashMap.Entry < String, Store > entry: stores.entrySet()){
+            Store tmp = entry.getValue();
+            if(tmp.getStoreId().equals(storeid)){
+                return tmp.getStoreName();
+            }
+        }
+        return "";
+    }
 }
 
